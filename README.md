@@ -1,2 +1,2 @@
 # Kubernetes-training
-Training content for a CKAD training i followed 2 years ago
+Training content for a CKAD training i followed in 2022.
