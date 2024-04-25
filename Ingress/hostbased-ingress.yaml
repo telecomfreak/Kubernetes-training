@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hapa-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: apa1.atcomputing.nl
+    http:
+      paths:
+      - path: /
+        pathType: Exact
+        backend:
+          service:
+            name: webservice1
+            port:
+              number: 80
+  - host: apa2.atcomputing.nl
+    http:
+      paths:
+      - path: /
+        pathType: Exact
+        backend:
+          service:
+            name: webservice2
+            port:
+              number: 80
+  defaultBackend:
+    service:
+      name: webservice2
+      port:
+        number: 80

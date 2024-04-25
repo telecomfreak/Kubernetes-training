@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: htmltext2
+data:
+  index.html: |
+    <h1>Greetings from apa2</h1>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver2
+  labels:
+    app: apa2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apa2
+  template:
+    metadata:
+      labels:
+        app: apa2
+    spec:
+      containers:
+      - name: apa2
+        image: atcomp/apachetest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: webpage
+          mountPath: /var/www/html
+          readOnly: True
+      volumes:
+      - name: webpage
+        configMap:
+          name: htmltext2

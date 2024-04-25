@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: attracts
+spec:
+  containers:
+  - name: attracts
+    image: atcomp/perfload
+    command: ["sh", "-c", "attract -s; sleep 7200"]
+    ports:
+    - containerPort: 31432
+  restartPolicy: Never

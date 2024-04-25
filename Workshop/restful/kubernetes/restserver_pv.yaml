@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: restserver-pv
+spec:
+  storageClassName: nfspool
+  capacity:
+    storage: 100Mi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+  - soft
+  nfs:
+    path: /storage/descriptions
+    server: desktop
+    readOnly: false

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sleepdep
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: snorer
+  template:
+    metadata:
+      labels:
+        app: snorer
+    spec:
+      containers:
+      - name: snorecont
+        image: alpine
+        command: ["sleep", "3600"]

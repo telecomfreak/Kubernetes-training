@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: randomizer
+spec:
+  completions: 20
+  parallelism: 1
+  template:
+    spec:
+      containers:
+      - name: randomize
+        image: alpine
+        command:
+        - sh
+        - -c 
+        - echo $RANDOM
+      restartPolicy: Never

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clientdep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clientpod
+  template:
+    metadata:
+      labels:
+        app: clientpod
+    spec:
+      containers:
+      - name: rc
+        image: atcomp/restclient
+        command: ["/src/restclient.py", "IPADDRESS"]

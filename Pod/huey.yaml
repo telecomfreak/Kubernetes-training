@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: huey
+  namespace: duck
+spec:
+  containers:
+  - name: huey
+    image: alpine
+    command: ["sleep", "3600"]
+  restartPolicy: Never

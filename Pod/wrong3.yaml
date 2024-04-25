@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wrong3
+spec:
+  containers:
+  - name: wrong3
+    image: centos
+    command: ["sleep", "X"]
+  restartPolicy: Never

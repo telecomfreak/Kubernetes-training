@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wrong2
+spec:
+  containers:
+  - name: wrong2
+    image: centos
+    command: ["notexist"]
+  restartPolicy: Never

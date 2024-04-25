@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pendulum
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: thispod
+  template:
+    metadata:
+      labels:
+        app: thispod
+    spec:
+      containers:
+      - name: smallben
+        image: centos:6
+        command:
+        - sh
+        - -c
+        - while sleep 10; do echo BING - $(date); done
+        env:
+        - name: TZ
+          value: Europe/Amsterdam

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webrock
+  labels:
+    app: websql
+  annotations:
+    maintainer: "Robert"
+    state: "In progress" 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: websql
+  template:
+    metadata: 
+      labels: 
+        app: websql
+    spec:
+      containers:
+      - name: webrock
+        image: atcomp/apacherock
+        ports:
+        - containerPort: 80
+        env:
+        - name: DBSERVER
+          value: 10.44.0.5
+        - name: DBNAME
+          value: rockdisc
+        - name: DBUSER
+          value: guru11
+        - name: DBPASS
+          value: helsinki11
+        volumeMounts:
+        - name: timezonehost
+          mountPath: /etc/localtime
+          readOnly: true
+      volumes:
+      - name: timezonehost
+        hostPath:
+          path: /etc/localtime

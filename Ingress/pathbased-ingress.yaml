@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: papa-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /apa1
+        pathType: Exact
+        backend:
+          service:
+            name: webservice1
+            port: 
+              number: 80
+  - http:
+      paths:
+      - path: /apa2
+        pathType: Exact
+        backend:
+          service:
+            name: webservice2
+            port: 
+              number: 80
+  defaultBackend:
+    service:
+      name: webservice2
+      port:
+        number: 80

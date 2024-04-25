@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fulldeploy
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: thispod
+  template:
+    metadata:
+      labels:
+        app: thispod
+    spec:
+      containers:
+      - name: fillfile
+        image: centos
+        command:
+        - sh
+        - -c
+        - dd if=/dev/zero of=/tmp/myfile bs=1M count=10; sleep 3600

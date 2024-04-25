@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: restserver-pvc
+spec:
+  storageClassName: nfspool
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi

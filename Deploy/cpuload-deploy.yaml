@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpuload
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: thispod
+  template:
+    metadata:
+      labels:
+        app: thispod
+    spec:
+      nodeName: work1
+      containers:
+      - name: usecpu
+        image: atcomp/perfload
+        command:
+        - usecpu
+#        resources:
+#          requests:
+#            cpu: 100m
+#          limits:
+#            cpu: 250m

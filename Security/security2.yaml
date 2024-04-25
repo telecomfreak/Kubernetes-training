@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure
+spec:
+  securityContext:
+    runAsUser: 11
+    runAsGroup: 111
+  containers:
+  - name: snore
+    image: atcomp/nwubuntu
+    command: ["sleep", "3600"]
+    env:
+    - name: TZ
+      value: Europe/Amsterdam
+  restartPolicy: Never

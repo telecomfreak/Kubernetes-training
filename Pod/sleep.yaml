@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: snorepod
+spec:
+  containers:
+  - name: snorecont
+    image: alpine
+    command: ["sleep", "20"]
+#  restartPolicy: Never

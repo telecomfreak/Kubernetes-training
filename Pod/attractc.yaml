@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: attractc
+spec:
+  containers:
+  - name: attractc
+    image: atcomp/perfload
+    command: ["attract", "-t", "30", "IP_attracts"]
+  restartPolicy: Never

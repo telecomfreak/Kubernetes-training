@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dewey
+spec:
+  containers:
+  - name: dewey
+    image: alpine
+    command: ["sleep", "3600"]
+  restartPolicy: Never

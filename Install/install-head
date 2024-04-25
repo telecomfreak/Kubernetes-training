@@ -1,0 +1,107 @@
+##########################################################################
+# Install Docker and activate Docker
+##########################################################################
+yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
+
+yum install -y docker-ce-20.10.11 docker-ce-cli-20.10.11 containerd.io
+
+systemctl enable --now docker
+
+cat <<EOF > /etc/docker/daemon.json
+{
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+EOF
+
+# pickup cgroupdriver configured in daemon.json
+systemctl restart docker
+
+##########################################################################
+# Disable SELinux (now and permanently)
+##########################################################################
+setenforce 0
+sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+
+##########################################################################
+# Disable swap (now and permanently)
+##########################################################################
+swapon |tail -n+2 | while read DEV REST; do swapoff "$DEV"; done
+sed -i '/swap.*swap/d' /etc/fstab
+
+##########################################################################
+# Set firewall rules (now and permanently)
+##########################################################################
+firewall-cmd --permanent --add-port=6443/tcp
+firewall-cmd --permanent --add-port=2379-2380/tcp
+firewall-cmd --permanent --add-port=10250/tcp
+firewall-cmd --permanent --add-port=10251/tcp
+firewall-cmd --permanent --add-port=10252/tcp
+firewall-cmd --permanent --add-port=10255/tcp
+firewall-cmd --reload
+modprobe br_netfilter
+echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+##########################################################################
+# Setup Kubernetes repo
+##########################################################################
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg \
+        https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+
+##########################################################################
+# Install and activate Kubernetes
+##########################################################################
+yum install -y kubelet-1.23.6 kubeadm-1.23.6 kubectl-1.23.6
+
+systemctl enable --now kubelet
+
+##########################################################################
+# Initialize Kubernetes cluster
+##########################################################################
+kubeadm init
+
+# OUTPUT:
+# .....
+# Your Kubernetes control-plane has initialized successfully!
+#
+# To start using your cluster, you need to run the following as a regular user:
+#
+#   mkdir -p $HOME/.kube
+#   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+#   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# .....
+#         kubeadm join 192.168.1.125:6443 --token mty8x1.somkc7svyw619qq8 \
+#             --discovery-token-ca-cert-hash sha256:...
+#
+
+##########################################################################
+# AS NORMAL USER: Make cluster admin
+##########################################################################
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+##########################################################################
+# AS NORMAL USER: Install POD network weavenet
+##########################################################################
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+##########################################################################
+# AS ROOT: Open ports for weavenet
+##########################################################################
+firewall-cmd --permanent --add-port=6783/tcp
+firewall-cmd --permanent --add-port=6783/udp
+firewall-cmd --permanent --add-port=6784/udp
+firewall-cmd --reload
+
+##########################################################################
+# View node configuration
+##########################################################################
+kubectl get node

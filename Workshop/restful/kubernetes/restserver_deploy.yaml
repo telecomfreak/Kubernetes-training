@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serverdep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serverpod
+  template:
+    metadata:
+      labels:
+        app: serverpod
+    spec:
+      containers:
+      - name: rs
+        image: atcomp/restserver:1.0
+        ports:
+        - containerPort: 8080

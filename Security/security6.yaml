@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure
+spec:
+  containers:
+  - name: snore
+    image: atcomp/nwubuntu
+    command: ["cat", "/tmp/shadow"]
+    env:
+    - name: TZ
+      value: Europe/Amsterdam
+    volumeMounts:
+    - name: shadow
+      mountPath: /tmp/shadow
+      readOnly: true
+  volumes:
+  - name: shadow
+    hostPath:
+      path: /etc/shadow
+  restartPolicy: Never

@@ -1,0 +1,712 @@
+drop database if exists `rockdisc`;
+create database `rockdisc`;
+grant all privileges on rockdisc.* to 'guru00'@'%' identified by 'helsinki00';
+grant all privileges on rockdisc.* to 'guru01'@'%' identified by 'helsinki01';
+grant all privileges on rockdisc.* to 'guru02'@'%' identified by 'helsinki02';
+grant all privileges on rockdisc.* to 'guru03'@'%' identified by 'helsinki03';
+grant all privileges on rockdisc.* to 'guru04'@'%' identified by 'helsinki04';
+grant all privileges on rockdisc.* to 'guru05'@'%' identified by 'helsinki05';
+grant all privileges on rockdisc.* to 'guru06'@'%' identified by 'helsinki06';
+grant all privileges on rockdisc.* to 'guru07'@'%' identified by 'helsinki07';
+grant all privileges on rockdisc.* to 'guru08'@'%' identified by 'helsinki08';
+grant all privileges on rockdisc.* to 'guru09'@'%' identified by 'helsinki09';
+grant all privileges on rockdisc.* to 'guru10'@'%' identified by 'helsinki10';
+grant all privileges on rockdisc.* to 'guru11'@'%' identified by 'helsinki11';
+grant all privileges on rockdisc.* to 'guru12'@'%' identified by 'helsinki12';
+grant all privileges on rockdisc.* to 'guru13'@'%' identified by 'helsinki13';
+grant all privileges on rockdisc.* to 'guru14'@'%' identified by 'helsinki14';
+grant all privileges on rockdisc.* to 'guru15'@'%' identified by 'helsinki15';
+grant all privileges on rockdisc.* to 'guru16'@'%' identified by 'helsinki16';
+grant all privileges on rockdisc.* to 'guru17'@'%' identified by 'helsinki17';
+grant all privileges on rockdisc.* to 'guru18'@'%' identified by 'helsinki18';
+grant all privileges on rockdisc.* to 'guru19'@'%' identified by 'helsinki19';
+flush privileges;
+use `rockdisc`;
+create table `discs` (
+        `id`    char(8),
+        `title` char(40) default NULL,
+        `year`  int(4)   default 0,
+        `genre` char(13) default "",
+        primary key  (`id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+create table `tracks` (
+        `title`    char(40),
+        `duration` int(4),
+        `discid`   char(8),
+        primary key  (`title`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("020a7001", "Phish / Dead Beats", 2000, "House");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Phish Files 1", 200, "020a7001");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("020d7e01", "Anthony Burgess / Clockwork Orange", 2001, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Clockwork Organge", 177, "020d7e01");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("020edb01", "Haywire / Boshed", 2007, "Hardcore");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("HAYWIRE / BOSHED", 272, "020edb01");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("020f2014", "Janet Jackson / Rhythm Nation 1814", 1989, "R&B");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: Pledge", 173, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Rhythm Nation", 217, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: T.V.", 195, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("State of the World", 162, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: Race", 195, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("The Knowledge", 217, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: Let's Dance", 318, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Miss You Much", 217, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: Come back Interlude", 230, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Love Will Never Do (Without You)", 208, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Livin' in a World (They Didn't Make)", 164, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Alright", 283, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: Hey Baby", 351, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Escapade", 272, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: No Acid", 162, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Black Cat", 261, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Lonely", 294, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Come Back to Me", 195, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Someday Is Tonight", 162, "020f2014");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Interlude: Livin'...In Complete Darkness", 320, "020f2014");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("020ff501", "Stereophonics / ", 2003, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Help Me (She's Out of Her Mind)", 253, "020ff501");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2102c004", "Right Bumper Crash / Sunrise", 2001, "Punk Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Sunrise", 167, "2102c004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("End of all it", 173, "2102c004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("My friend", 169, "2102c004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Say your mind", 173, "2102c004");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("21051004", "Southpaw / Southpaw", 1996, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Alien", 340, "21051004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Head In A Box", 308, "21051004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Coast To Coast", 304, "21051004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Windmill Man", 312, "21051004");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("21075004", "SWEETSHOP / WALL", 2001, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("WALL", 164, "21075004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("BANZAI CLIFF", 172, "21075004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("WALL(Instrumental)", 178, "21075004");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("ENHANCED", 168, "21075004");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("210cb615", "Honeycombs / The Honeycombs", 1990, "Beat");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Color Slide", 250, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Once You Knw", 240, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Without You It Is Night", 330, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("That's The Way", 220, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Want To Be Free", 190, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("How The Mighty Have Fallen", 300, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Have I The Right", 200, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Just A Face In The Crowd", 320, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Nice While It Lasted", 160, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Me From You", 250, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Leslie Anne", 250, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("She's Too Way Out", 190, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("It Ain't Nesessarily So", 330, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("This Too Shall Pass Away", 320, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Please Don't Pretend Again", 300, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I'll Cry Tomorrow", 190, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("If You've Got To Pick A Baby", 280, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I'll See You Tomorrow", 350, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Can't Stop", 240, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Hab ich das Recht", 190, "210cb615");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Du sollst nicht traurig sein", 280, "210cb615");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2110b914", "The Pure / Open all night - CD 2/2", 2006, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I sold my soul to Rock'n Roll", 334, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Soul revival", 232, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("You are the one", 250, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Lilly's song", 232, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Sungun", 196, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Nothing at all", 244, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("My little sister", 256, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Kiss me goodnight", 262, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("When you're dancing", 274, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("The last time around", 280, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("How do you feel", 250, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Loving criminals", 256, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("The last time", 238, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Who can we blame", 256, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("It's alright", 232, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("All alone", 214, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I've been searching my soul", 322, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("You are my sin", 244, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Wild is the wind", 256, "2110b914");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Run", 178, "2110b914");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2111b013", "ZZ Top / Greatest hits", 1992, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Gimme All Your Love", 208, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Sharp Dressed Man", 224, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Rough Boy", 288, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Tush", 328, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("My Head Is In Mississippi", 160, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Pearl Necklace", 248, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I'm Bad, I'm Nationalwide", 160, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Viva Las Vegas", 248, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Doubleback", 280, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Gun Love", 296, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Got Me Under Pressure", 192, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Give It Up", 280, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Cheap Sunglasses", 232, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Sleeping Bag", 264, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Planet Of Women", 240, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("La Grange", 288, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Tube Shake Boogie", 224, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Legs", 328, "2111b013");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Breakaway [Bonus Track]", 176, "2111b013");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("21120413", "several / Kenga Magjike", 2003, "Dance");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("WEST SIDE FAMILY- Hou cike", 238, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("ETNO ENGJEJT- Nate", 214, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("PRODUKT 28- Trokas", 214, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("JULKA- Te ndjej", 205, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("PIRRO CAKO- Une-ai, ti-ajo", 238, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("FLORIANA MUCA- Per ty", 223, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("KLAJDI MUSABELLIU- Deluzion", 241, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("ALKETA & FLORI- Merrme te fundit nate", 271, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("JEHONA SOPI- Tash dhe perseri", 247, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("ARBERIE HADERGJONAJ- Ti nuk je", 250, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("SUELA KALAJA- Mos me mbaj meri", 250, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("ALEKSANDER GJOKA- Kuturu", 232, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("RUDI STINE 3XL- Ejani ju ftojme ne party", 280, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("THE DREAMS- Dua te te bind", 238, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("EMA BYTYCI- Ku je ti", 220, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("GRUPI AURORA- Te urrej", 226, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("JONIDA MALIQI- Vetem nje nate", 247, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("FITNETE TUDA- Si muzika", 229, "21120413");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("ALB MAGJI- E paharruar", 226, "21120413");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2801f504", "Dope / Promo CD", 2003, "Alternative");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Bitch", 175, "2801f504");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Burn", 172, "2801f504");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Motivation (Snippet)", 220, "2801f504");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Am (Snippet)", 202, "2801f504");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("28031904", "Innermeans / Innermeans", 1997, "Hard Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Bloodguilt", 330, "28031904");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Fallingtime", 327, "28031904");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Dischord", 336, "28031904");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Casualtyofme", 324, "28031904");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2803b305", "the abdomen / sketches", 2008, "Pop");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("kiss me now", 248, "2803b305");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("valentine", 232, "2803b305");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("unbreakable", 248, "2803b305");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("we don't change", 280, "2803b305");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("summer rain (remix)", 312, "2803b305");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2804b204", "The Darling Buds / Crystal Clear", 1990, "Alternative");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Crystal Clear (7' Version)", 300, "2804b204");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Crystal Clear (Extended Version)", 240, "2804b204");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Tripped Up", 260, "2804b204");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Crystal Clear (A Mix Amethyst)", 260, "2804b204");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("28050c04", "Backstreet Boys / I Want It That Way", 1999, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Want It That Way (Album Version)", 326, "28050c04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Want It That Way (Morales Club Mix)", 323, "28050c04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Want It That Way (The Wunder Dub)", 325, "28050c04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Want It That Way (Jazzy Jim Vocal)", 324, "28050c04");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2a06b104", "Mike & Charlie / I Get Live", 2000, "Dance");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Get Live (Fatboy Slim Mix)", 204, "2a06b104");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Get Live (Headbanger Boogie Mix)", 242, "2a06b104");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Get Live (Dave London Mix)", 204, "2a06b104");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I Get Live (The Bears Mix)", 258, "2a06b104");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2a082003", "Mental Joutney / Mevlevi Sufi Relaxation", 2000, "Other");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Acilis", 350, "2a082003");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Sana dogru", 190, "2a082003");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Okyanusa dogru", 266, "2a082003");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("2a088e04", "Drudkh / Estrangement", 2007, "Black Metal");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Solitary Endless Path", 307, "2a088e04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Skies At Our Feet", 279, "2a088e04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Where Horizons End", 286, "2a088e04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Only The Wind Remembers My Name", 177, "2a088e04");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("34031105", "The Old Soul / The Old Soul", 2005, "Pop");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("River Of Daughters", 250, "34031105");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Robert Wyatt", 220, "34031105");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("St. Luke Is Holding His Weapon", 310, "34031105");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("The Old Soul 1", 230, "34031105");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("The Old Soul 2", 230, "34031105");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3403f104", "The Early Years / The Great Awakening", 2007, "Alt. Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Say What I Want To", 286, "3403f104");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("On Fire", 209, "3403f104");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Autumn Song", 237, "3403f104");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("A Little More (Version II)", 342, "3403f104");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3404ed05", "Missing Dave / 2006 Promo CD", 2006, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Wash Away My Tears", 268, "3404ed05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Bratislavan Nightmare", 286, "3404ed05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Stronger", 208, "3404ed05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Reality Junkie", 244, "3404ed05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Barren", 196, "3404ed05");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("34088c04", "Mgla / Groza", 2008, "Black Metal");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("I", 168, "34088c04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("II", 176, "34088c04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("III", 184, "34088c04");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("IV", 176, "34088c04");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3411c505", "Spicelab / Lost in Spice", 1994, "Electronica");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Cold Chillin'", 282, "3411c505");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Spicelab", 312, "3411c505");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("The Spirit of Fear", 252, "3411c505");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("The Last Supernova", 252, "3411c505");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Lost in Spice", 282, "3411c505");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3d033d05", "Fusion / Latency (EP)", 2001, "Metal");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Latency", 167, "3d033d05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Shattered", 169, "3d033d05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("When Time Passes By", 179, "3d033d05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Breathe In", 170, "3d033d05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Oklahoma", 168, "3d033d05");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3d04c304", "KNOW HOW / Reality", 1989, "Dance");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Reality (Dance Remix)", 329, "3d04c304");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Reality (Dub Version)", 329, "3d04c304");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Reality (Dance Mix)", 351, "3d04c304");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Reality (Single Version)", 296, "3d04c304");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3d04eb05", "Rana / senin senin", 2004, "Pop");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("senin senin", 204, "3d04eb05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Radio Edit", 200, "3d04eb05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Extended Mix", 208, "3d04eb05");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Darabuka Mix", 208, "3d04eb05");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3d06b406", "Muse / Dead Star - In Your World", 2003, "Rock");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Dead Star", 187, "3d06b406");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("In Your World", 199, "3d06b406");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Futurism", 184, "3d06b406");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Can't Take My Eyes Off You", 238, "3d06b406");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("Dead Star (instrumental)", 232, "3d06b406");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("DATA", 172, "3d06b406");
+insert into `discs` (
+                             `id`, `title`, `year`, `genre`)
+                             values ("3d07ec06", "Don't Know Yet / What time is it? ", 1990, "Club");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("What Time Is It? (Power Radio Mix(m))", 190, "3d07ec06");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("What Time Is It? (Power Radio Mix(m/f))", 170, "3d07ec06");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("What Time Is It? (Powerhouse Mix)", 230, "3d07ec06");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("What Time Is It? (Club Mix)", 290, "3d07ec06");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("What Time Is It? (808 Mix)", 300, "3d07ec06");
+insert into `tracks` (
+                                 `title`, `duration`, `discid`)
+                                 values ("What Time Is It? (Progressive Mix)", 220, "3d07ec06");

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: websql
+  annotations:
+    maintainer: "Robert"
+    state: "In progress"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: websql
+  template:
+    metadata: 
+      labels: 
+        app: websql
+    spec:
+      containers:
+      - name: mysqlcont
+        image: mysql:5.7
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: mysecret
+        volumeMounts:
+        - name: timezonehost
+          mountPath: /etc/localtime
+          readOnly: true
+      volumes:
+      - name: timezonehost
+        hostPath:
+          path: /etc/localtime

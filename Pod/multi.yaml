@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multipod
+spec:
+  initContainers:
+  - name: snore1
+    image: alpine
+    command: ["sleep", "15"]
+  - name: sayhi
+    image: alpine
+    command: ["echo", "hi"]
+  - name: snore2
+    image: alpine
+    command: ["sleep", "5"]
+  containers:
+  - name: snore3
+    image: alpine
+    command: ["sleep", "20"]
+  - name: saybye
+    image: alpine
+    command: ["echo", "bye"]
+  - name: snore4
+    image: alpine
+    command: ["sleep", "10"]
+  restartPolicy: Never

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: louie
+spec:
+  containers:
+  - name: louie
+    image: alpine
+    command: ["sleep", "3600"]
+  restartPolicy: Never

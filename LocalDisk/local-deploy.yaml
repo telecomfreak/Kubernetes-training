@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: localdep
+  labels:
+    app: localdep
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: localpod
+  template:
+    metadata:
+      labels:
+        app: localpod
+    spec:
+      containers:
+      - name: cont1
+        image: ubuntu
+        command:
+        - sh
+        - -c
+        - echo This is a persistent message >> /data/persistent; sleep 3600
+        volumeMounts:
+        - name: localstore
+          mountPath: /data
+      volumes:
+      - name: localstore
+        persistentVolumeClaim:
+          claimName: localpvc

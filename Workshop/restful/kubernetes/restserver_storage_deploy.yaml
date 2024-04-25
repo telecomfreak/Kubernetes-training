@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serverdep
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: serverpod
+  template:
+    metadata:
+      labels:
+        app: serverpod
+    spec:
+      containers:
+      - name: rs
+        image: atcomp/restserver:1.0
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: proddesc
+          mountPath: /descriptions
+
+      volumes:
+      - name: proddesc
+        persistentVolumeClaim:
+          claimName: restserver-pvc
